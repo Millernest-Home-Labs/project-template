@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"name": "Millernest Home Labs",
+			"path": "../"
+		}
+	],
+	"settings": {
+		"chat.promptFilesLocations": {
+			"project-template/.github/prompts": true
+		},
+		"chat.agentFilesLocations": {
+			"project-template/.github/agents": true
+		},
+		"chat.instructionsFilesLocations": {
+			"project-template/.github/instructions": true
+		},
+		"chat.agentSkillsLocations": {
+			"project-template/.agents/skills": true
+		},
+		"search.exclude": {
+			"**/.git/**": true,
+			"**/node_modules/**": true,
+			"**/bin/**": true,
+			"**/obj/**": true,
+			"**/dist/**": true,
+			"**/build/**": true,
+			"**/coverage/**": true,
+			"**/.terraform/**": true,
+			"**/artifacts/**": true,
+			"**/logs/**": true
+		}		
+	}
+}
