@@ -59,18 +59,6 @@
         }
       }
     },
-    "litellm": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "LiteLLM",
-      "options": {
-        "baseURL": "http://192.168.1.194:4000/v1",
-        "apiKey": "REPLACE-WITH-YOUR-LITELLM-KEY"
-      },
-      "models": {
-        "Qwen3.8-27B": { "name": "Qwen3.8-27B" }
-      }
-    }
-  },
   "plugin": [
     ".opencode/plugins/graphify.js",
     "https://github.com/ethanimproving/story-to-ship",
