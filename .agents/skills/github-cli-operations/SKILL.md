@@ -56,7 +56,29 @@ gh auth status
 
 ### Using Personal Access Token (Alternative)
 
-For automation or CI/CD:
+For local automation or CI/CD, prefer the user's existing `GH_TOKEN_PERSONAL` environment variable when present. Map it to `GH_TOKEN` only for the command scope because `gh` recognizes `GH_TOKEN`, not the custom variable name. Never print, persist, or write either value to a project file.
+
+PowerShell example that restores the prior corporate `GH_TOKEN` afterward:
+
+```powershell
+$previousGhToken = $env:GH_TOKEN
+try {
+    $env:GH_TOKEN = $env:GH_TOKEN_PERSONAL
+    gh pr list --repo Millernest-Home-Labs/labs-infra
+}
+finally {
+    if ($null -eq $previousGhToken) {
+        Remove-Item Env:GH_TOKEN -ErrorAction SilentlyContinue
+    }
+    else {
+        $env:GH_TOKEN = $previousGhToken
+    }
+}
+```
+
+If `GH_TOKEN_PERSONAL` is absent, use the existing authenticated `gh` account or ask the user to configure it locally. Never ask the user to paste a token into chat.
+
+For CI/CD setups where an explicit token is required:
 
 ```bash
 # Set via environment variable

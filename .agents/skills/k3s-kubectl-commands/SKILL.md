@@ -1,11 +1,22 @@
 ---
 name: k3s-kubectl-commands
-description: 'Expert in deploying, managing, and troubleshooting Kubernetes workloads on K3s clusters using kubectl command-line tool.'
+description: 'Expert in deploying, managing, and troubleshooting Kubernetes workloads on K3s clusters using kubectl: set secrets, roll out images, check pod health, inspect events and logs (including Loki), verify services/ports, MySQL and MinIO status. USE WHEN: kubectl, K3s, deploy image, rollout, set secret, pod crashloop, pod logs, cluster health, namespace dev, infra task.'
 ---
 
 # K3s Kubectl Commands Skill
 
 **Expert in deploying, managing, and troubleshooting Kubernetes workloads on K3s clusters using kubectl command-line tool.**
+
+## Millernest Lab Operating Rules
+
+- Cluster: self-hosted K3s at `192.168.1.206`. Always pass `-n dev` explicitly unless told otherwise.
+- Kubeconfig locations: `/appdata/kube/config` (OpenClaw/opencode container, kubectl at `/appdata/bin/kubectl`); `.github/secrets/kubeconfig.yaml` (Rancher proxy) or `kubeconfig-lan.yaml` on workstations. `.github/secrets/` must stay git-ignored.
+- **Never** print, commit, persist or summarize kubeconfig contents or secret values. Redact commands and output.
+- When setting secrets, update only the requested keys, idempotently: `kubectl create secret ... --dry-run=client -o yaml | kubectl apply -f -`.
+- Never delete or scale down production services. Restore any `dev` resource you scaled for testing to its original replica count.
+- Do not modify application code from an infra task; report actions, redacted commands, results and errors.
+- Deploy order: ConfigMap -> Service -> Deployment -> `kubectl set image` -> `kubectl rollout status --timeout=600s` -> Ingress. If the rollout fails, `kubectl rollout undo`.
+- From the corporate laptop, `exec`/`port-forward` fail (`Upgrade request required`) and LAN ports fail with WSAEACCES 10013. Do not retry or tunnel. Use REST-only commands plus short-lived in-cluster pods read via `kubectl logs`. See `.github/learnings/2026-09-28-corporate-workstation-network-limits.md`.
 
 ## Core Capabilities
 

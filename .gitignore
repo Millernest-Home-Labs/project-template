@@ -6,3 +6,4 @@ test-results/
 playwright-report/
 graphify-out/
 *.log
+.github/secrets/
