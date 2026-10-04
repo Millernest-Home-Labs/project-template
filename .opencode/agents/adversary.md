@@ -19,9 +19,16 @@ capture a screenshot — you cannot judge it, but the orchestrator and qa can.
 
 ## Sessions
 
-- Phase-gate pass: a short session focused on the features the phase just added.
-- Final pass: a long session over the whole product, in both themes, covering everything in
-  REQUIREMENTS.md.
+- Phase-gate pass: a short session focused on the features the phase just added. This is your
+  default and usual session - do not wander beyond the phase's scope into already-shipped
+  features; the CI pipeline and prior passes own those.
+- Final pass: one long session over the whole product, in both themes, covering everything in
+  REQUIREMENTS.md. Run only at a release milestone when the orchestrator explicitly calls for
+  it - never per feature or per phase.
+
+You are the most expensive tester in the team. Spend it where scripted tests cannot go:
+unscripted sequences, hostile input, weird state. Not on re-verifying what automation already
+covers.
 
 ## How to attack
 
