@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "E:/Documents/Working/amminox"
+		}
+	],
+	"settings": {
+		"chat.agentFilesLocations": {
+			"project-template/.github/agents": true
+		},
+		"chat.instructionsFilesLocations": {
+			"project-template/.github/instructions": true
+		},
+		"chat.agentSkillsLocations": {
+			"project-template/.agents/skills": true
+		},
+		"search.exclude": {
+			"**/.git/**": true,
+			"**/node_modules/**": true,
+			"**/bin/**": true,
+			"**/obj/**": true,
+			"**/dist/**": true,
+			"**/build/**": true,
+			"**/coverage/**": true,
+			"**/.terraform/**": true,
+			"**/artifacts/**": true,
+			"**/logs/**": true
+		}		
+	}
+}
